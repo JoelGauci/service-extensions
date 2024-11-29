@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: broker
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: httpbroker
+  namespace: broker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbroker
+  namespace: broker
+  labels:
+    app: httpbroker
+    service: httpbroker
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: httpbroker
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbroker
+  namespace: broker
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: httpbroker
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: httpbroker
+        version: v1
+    spec:
+      serviceAccountName: httpbroker
+      containers:
+      - image: europe-west1-docker.pkg.dev/bap-emea-apigee-1/broker-repo/broker-app:latest
+        imagePullPolicy: Always
+        name: httpbroker
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 1
+            memory: 1024Mi
+          limits:
+            cpu: 1
+            memory: 1024Mi
+

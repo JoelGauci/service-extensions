@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MQTT Web Client</title>
+  <!-- Lien vers Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Votre CSS personnalisé -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+  <div class="container py-4">
+    <!-- Titre -->
+    <h1 class="text-center text-primary mb-4">Broadcast App</h1>
+    
+    <!-- Statut -->
+    <div id="status" class="alert alert-warning text-center" role="alert">
+      Status: Disconnected
+    </div>
+
+    <!-- Formulaire API Key et Username -->
+    <div id="user-input" class="mb-4">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <label for="apiKey" class="form-label">API Key:</label>
+          <input type="text" id="apiKey" maxlength="60" class="form-control" placeholder="Enter API Key (max 60 chars)">
+          <span class="error" id="apiKeyError"></span>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+          <label for="username" class="form-label">Username:</label>
+          <input type="text" id="username" maxlength="40" class="form-control" placeholder="Enter Username (max 40 chars)">
+          <span class="error" id="usernameError"></span>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+          <label for="msgToSend" class="form-label">Message:</label>
+          <input type="text" id="msgToSend" maxlength="160" class="form-control" placeholder="Enter Message to send (max 160 chars)">
+          <span class="error" id="msgToSendError"></span>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-6 text-center">
+          <button id="submitButton" class="btn btn-primary w-100">Send</button>
+        </div>
+      </div>
+    </div>
+    <p id="result" style="margin-top: 20px;"></p>
+
+    <!-- Messages -->
+    <div id="messages" class="border rounded bg-white p-3" style="height: 300px; overflow-y: scroll;">
+      <p class="text-muted text-center"></p>
+    </div>
+  </div>
+
+  <!-- Lien vers Bootstrap JS (optionnel pour le bouton ou autres éléments dynamiques) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Script pour MQTT -->
+  <script src="paho-mqtt-min.js"></script>
+  <script src="mqtt-client.js"></script>
+  <script src="http-client.js"></script>
+</body>
+</html>

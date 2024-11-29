@@ -1,0 +1,10 @@
+apiVersion: apim.googleapis.com/v1alpha1
+kind: Javascript
+metadata:
+  name: js-1
+  namespace: apigee
+spec:
+  timeLimit: 2000
+  source: |
+    var extraMsg = "msg from Paris @APIDays2024";
+    context.setVariable("request.header.x-msg", extraMsg);

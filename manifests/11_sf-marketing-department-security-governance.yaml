@@ -1,0 +1,16 @@
+apiVersion: mycompany.apis.com/v1 
+kind: Secgov
+metadata:
+  name: marketing-department-security-governance
+  namespace: apigee
+spec:
+  name: marketing-department-security-governance
+  filters:
+    - group: apim.googleapis.com
+      kind: SpikeArrest
+      name: spike-arrest-1
+      namespace: apigee
+    - kind: Javascript
+      name: js-1
+      group: apim.googleapis.com
+      namespace: apigee

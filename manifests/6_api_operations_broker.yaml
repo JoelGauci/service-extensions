@@ -1,0 +1,20 @@
+apiVersion: apim.googleapis.com/v1alpha1
+kind: APIOperationSet
+metadata:
+  name: broker-op-set
+  namespace: apigee
+spec:
+  apiProductRefs:
+  - name: broker-product
+    kind: APIProduct
+    group: apim.googleapis.com
+    namespace: apigee
+  quota:
+    limit: 10
+    interval: 1
+    timeUnit: minute
+  restOperations:
+   - name: PublishMsg 
+     path: "/v1/broker"
+     methods:
+     - POST

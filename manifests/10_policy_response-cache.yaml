@@ -1,0 +1,17 @@
+apiVersion: apim.googleapis.com/v1alpha1
+kind: ResponseCache
+metadata:
+  name: response-cache-1
+  namespace: apigee
+spec:
+  mode:
+  - ProxyRequest
+  - ProxyResponse
+  cacheKey:
+    fragments:
+    - type: string
+      ref: request.uri
+  cacheExpiry:
+    timeoutInSeconds:
+      value: "10"
+

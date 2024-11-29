@@ -1,0 +1,13 @@
+apiVersion: apim.googleapis.com/v1alpha1
+kind: APIMExtensionPolicy
+metadata:
+  name: global-ext-lb1-apim-policy 
+  namespace: apigee
+spec:
+  location: global
+  failOpen: false
+  timeout: 1000ms
+  targetRef: # identifies the Gateway to install extension on
+    name: global-ext-lb1 
+    kind: Gateway
+    namespace: default

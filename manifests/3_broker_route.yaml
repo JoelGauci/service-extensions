@@ -1,0 +1,28 @@
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: http-broker-route
+  namespace: broker
+spec:
+  parentRefs:
+  - kind: Gateway
+    name: global-ext-lb1 
+    namespace: default
+  hostnames:
+  - "34.111.189.111.nip.io"
+  rules:
+  - matches:
+    - path:
+        value: /v1/broker
+    backendRefs:
+    - name: httpbroker
+      port: 80
+      namespace: broker
+  - matches:
+    - path:
+        value: /
+    backendRefs:
+    - name: httpbroker
+      port: 80
+      namespace: broker
+

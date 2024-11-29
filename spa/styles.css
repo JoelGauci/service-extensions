@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#status {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#messages {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  width: 75%; /* Zone d'affichage des messages */
+  margin: 0 auto;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 5px;
+  background: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.message .timestamp {
+  color: #f4c20d; /* Jaune orangé Google */
+  font-weight: bold;
+}
+
+.message .topic {
+  color: red;
+}
+
+.message .username {
+  color: green;
+}
+
+.message .content {
+  color: #003366; /* Bleu nuit */
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+}

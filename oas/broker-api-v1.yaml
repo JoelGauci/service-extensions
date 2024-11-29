@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Broker API
+  description: API for publishing messages to a specific topic based on `x-api-key`.
+  version: 1.0.0
+servers:
+  - url: https://34.111.189.111.nip.io/v1
+paths:
+  /broker:
+    post:
+      summary: Publish a message to a topic
+      description: This endpoint publishes the provided message to a topic based on the `x-api-key`.
+      operationId: publishMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - msg
+              properties:
+                username:
+                  type: string
+                  example: Fred
+                  description: The username of the message sender.
+                msg:
+                  type: string
+                  example: Hello World!!!
+                  description: The message to be published.
+      responses:
+        '200':
+          description: Message successfully published.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  topic:
+                    type: string
+                    example: msg/xxx-yyy-zzz
+                    description: The topic where the message was published.
+        '400':
+          description: Bad request (e.g., invalid input or missing fields).
+        '401':
+          description: Unauthorized (e.g., invalid or missing API key).
+        '500':
+          description: Internal server error.
+      security:
+        - ApiKeyAuth: []
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key

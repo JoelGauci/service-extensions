@@ -1,0 +1,17 @@
+apiVersion: apim.googleapis.com/v1alpha1
+kind: ApigeeGatewayPolicy 
+metadata:
+  name: api-security-layer-policy
+  namespace: apigee
+spec:
+  ref:
+    group: mycompany.apis.com/v1 
+    kind: Secgov
+    name: marketing-department-security-governance 
+    namespace: apigee
+  targetRef:
+    group: apim.googleapis.com 
+    kind: APIMExtensionPolicy 
+    name: global-ext-lb1-apim-policy 
+    namespace: apigee
+
