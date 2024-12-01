@@ -1,0 +1,19 @@
+kind: Gateway
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: global-ext-lb1
+spec:
+  gatewayClassName: gke-l7-global-external-managed 
+  listeners:
+  - name: https
+    protocol: HTTPS
+    allowedRoutes:
+      kinds:
+      - kind: HTTPRoute
+      namespaces:
+        from: All
+    port: 443
+    tls:
+      options:
+        networking.gke.io/pre-shared-certs: apigee-serv-ext-demo
+
