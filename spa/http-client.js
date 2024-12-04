@@ -35,8 +35,8 @@ document.getElementById("submitButton").addEventListener("click", function () {
     };
 
     // Envoyer les données avec fetch
-    fetch("https://34.111.189.111.nip.io/v1/broker", {
-    //fetch("http://127.0.0.1:3080/v1/broker", {
+    fetch("https://34-95-84-14.nip.io/v1/message", {
+    //fetch("http://127.0.0.1:80/v1/broker", { // for internal tests only
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,6 +46,10 @@ document.getElementById("submitButton").addEventListener("click", function () {
     })
     .then(response => {
       if (response.status !== 200) {
+        console.log('line 49'); //added by samy
+        console.log('samy log response ', response); // added by samy
+        console.log('samy log response ', response.status); // added by samy
+
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();

@@ -10,7 +10,7 @@ spec:
     group: apim.googleapis.com
     namespace: apigee
   quota:
-    limit: 10
+    limit: 5
     interval: 1
     timeUnit: minute
   restOperations:

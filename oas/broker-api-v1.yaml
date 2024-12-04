@@ -4,9 +4,9 @@ info:
   description: API for publishing messages to a specific topic based on `x-api-key`.
   version: 1.0.0
 servers:
-  - url: https://34.111.189.111.nip.io/v1
+  - url: https://34-95-84-14.nip.io/v1
 paths:
-  /broker:
+  /message:
     post:
       summary: Publish a message to a topic
       description: This endpoint publishes the provided message to a topic based on the `x-api-key`.

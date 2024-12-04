@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.post('/v1/broker', (req, res) => {
   const { username, msg } = req.body;
   const apiKey = req.headers['x-api-key'];
-  const extraMsg = req.headers['x-msg']; // usefull for the JavaScript test in Apigee
+  const extraMsg = req.headers['x-msg']; // usefull for the JavaScript test in Apigee X
 
   // Validation des données
   if (!username || !msg || !apiKey) {
